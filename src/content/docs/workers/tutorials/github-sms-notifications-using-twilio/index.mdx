@@ -38,9 +38,9 @@ Start by using `npm create cloudflare@latest` to create a Worker project in the 
 	file="c3-post-run-steps"
 	product="workers"
 	params={{
-		one: "Hello World example",
-		two: "Hello World Worker",
-		three: "JavaScript",
+		category: "hello-world",
+		type: "Hello World Worker",
+		lang: "JavaScript",
 	}}
 />
 
@@ -155,9 +155,15 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs_compat flag to your `wrangler.toml` file:
 
+import { WranglerConfig } from "~/components";
+
+<WranglerConfig>
+
 ```toml
 compatibility_flags = ["nodejs_compat"]
 ```
+
+</WranglerConfig>
 
 ---
 

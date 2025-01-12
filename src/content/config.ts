@@ -1,5 +1,5 @@
 import { z, defineCollection } from "astro:content";
-import { docsSchema } from "@astrojs/starlight/schema";
+import { docsSchema, i18nSchema } from "@astrojs/starlight/schema";
 import {
 	appsSchema,
 	changelogsSchema,
@@ -7,11 +7,12 @@ import {
 	notificationsSchema,
 	pagesBuildEnvironmentSchema,
 	pagesFrameworkPresetsSchema,
-	compatibilityDatesSchema,
+	compatibilityFlagsSchema,
 	glossarySchema,
 	learningPathsSchema,
 	videosSchema,
 	workersAiSchema,
+	changelogsNextSchema,
 } from "~/schemas";
 
 const partialSchema = z.object({
@@ -24,12 +25,13 @@ export const collections = {
 			extend: baseSchema,
 		}),
 	}),
+	i18n: defineCollection({ type: "data", schema: i18nSchema() }),
 	changelogs: defineCollection({
 		schema: changelogsSchema,
 		type: "data",
 	}),
-	"compatibility-dates": defineCollection({
-		schema: compatibilityDatesSchema,
+	"compatibility-flags": defineCollection({
+		schema: compatibilityFlagsSchema,
 	}),
 	partials: defineCollection({
 		schema: partialSchema,
@@ -72,5 +74,8 @@ export const collections = {
 	apps: defineCollection({
 		schema: appsSchema,
 		type: "data",
+	}),
+	"changelogs-next": defineCollection({
+		schema: changelogsNextSchema,
 	}),
 };
